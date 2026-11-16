@@ -126,7 +126,7 @@ const body=document.createElement('div');body.id='lm-body';
 body.innerHTML='<input id="lm-search" type="search" placeholder="Cari padi, sawit, sempadan…" aria-label="Cari layer"><div class="lm-active-head"><b>Layer aktif <span id="lm-count">0</span></b><button type="button" id="lm-clear">Tutup semua</button></div><div id="lm-active" class="lm-active"></div><p id="lm-empty" hidden>Tiada layer sepadan.</p>';
 function section(title,open){const d=document.createElement('details');d.className='lm-section';d.open=open;const s=document.createElement('summary');s.textContent=title;d.append(s);body.append(d);return d;}
 const agri=section('Pertanian 2025',true);agri.innerHTML+='<p class="lm-hint">Kumpulan → jenis pertanian · Keluasan terbesar dahulu. Tanaman Lain diletakkan terakhir dalam kumpulannya. Boleh pilih beberapa layer.</p><div id="gtn-groups"></div><p id="gtn-status" role="status" class="lm-hint">Data dimuatkan apabila layer dipilih.</p>';
-const policy=section('Kawasan Dasar KPU',false);policy.append(toolbar,controls);
+const policy=section('Kawasan Pertanian Utama (KPU)',false);policy.append(toolbar,controls);body.insertBefore(policy,agri);
 const boundary=section('Sempadan Pentadbiran',false);boundary.append(adminTitle,admin);
 side.replaceChildren(head,body);
 document.getElementById('lm-fold').onclick=()=>{const folded=side.classList.toggle('lm-folded');body.hidden=folded;side.closest('.kpu-map-layout').classList.toggle('lm-collapsed',folded);document.getElementById('lm-fold').textContent=folded?'Buka':'Lipat';document.getElementById('lm-fold').setAttribute('aria-expanded',String(!folded));window.kpuMap?.invalidateSize();};
