@@ -198,6 +198,7 @@ members.push({input,getLayer:()=>layer,enable:()=>{if(!input.checked){input.chec
 });});
 window.kpuShowAgricultureGroup=async name=>{
  const members=groupLayers.get(name);if(!members)return;
+ groupLayers.forEach((items,groupName)=>{if(groupName!==name)items.forEach(item=>{if(item.input.checked){item.input.checked=false;item.input.dispatchEvent(new Event('change',{bubbles:true}));}});});
  const request=++groupFocusToken;
  document.getElementById('peta-kpu')?.scrollIntoView({behavior:'smooth',block:'start'});
  status.textContent='Memuatkan kumpulan '+name+'…';
